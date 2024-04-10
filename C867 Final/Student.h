@@ -16,10 +16,12 @@ class Student {
 
 public:
     // Constructor
+    Student();
     Student(string studentID, string firstName, string lastName, string emailAddress, int age, int day0, int day1, int day2,
             DegreeProgram degreeProgram);
 
     // Destructor
+    ~Student();
     // Printer
     void Print();
 
@@ -38,7 +40,7 @@ public:
     void SetEmailAddress(string emailAddress);
     void SetAge(int age);
     void SetDaysLeftForEachClass(int position, int value);
-    void SetDegreeProgram(DegreeProgram m_degreeProgram);
+    void SetDegreeProgram(DegreeProgram degreeProgram);
 
 private:
     string m_studentID;

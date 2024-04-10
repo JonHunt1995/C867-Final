@@ -5,12 +5,24 @@
 //  Created by Jonathan Hunt on 4/5/24.
 //
 #include <iostream>
-#include "student.h"
+#include "Student.h"
 #include <string>
 
 using namespace std;
 
 // Constructor
+Student::Student() {
+    m_studentID = "";
+    m_firstName = "";
+    m_lastName = "";
+    m_emailAddress = "";
+    m_age = 0;
+    m_daysLeftforEachClass0 = 0;
+    m_daysLeftforEachClass1 = 0;
+    m_daysLeftforEachClass2 = 0;
+    m_degreeProgram = NETWORK;
+   
+}
 Student::Student(string studentID, string firstName , string lastName, string emailAddress, int age, int daysAtCourse0, int daysAtCourse1, int daysAtCourse2, DegreeProgram degreeProgram)
     :
     m_studentID(studentID),
@@ -25,10 +37,21 @@ Student::Student(string studentID, string firstName , string lastName, string em
     {
     }
 // Destructor
-
+Student::~Student()
+{
+}
 // Printer
 void Student::Print() {
-    cout << m_studentID << "\tFirst Name: " << m_firstName << "\tLast NAme: " << m_lastName << "\tAge: " << m_age << "\tdaysInCourse: {" << m_daysLeftforEachClass0 << ", " << m_daysLeftforEachClass1 << ", " << m_daysLeftforEachClass2 << "}\tDegree Program: " << m_degreeProgram << endl;
+    
+    string degreeString;
+    if(m_degreeProgram == 0) {
+        degreeString = "SECURITY";
+    } else if (m_degreeProgram == 1) {
+        degreeString = "NETWORK";
+    } else {
+        degreeString = "SOFTWARE";
+    }
+    cout << m_studentID << "\tFirst Name: " << m_firstName << "\tLast Name: " << m_lastName << "\tAge: " << m_age << "\tdays In Course: {" << m_daysLeftforEachClass0 << ", " << m_daysLeftforEachClass1 << ", " << m_daysLeftforEachClass2 << "}\tDegree Program: " << degreeString << endl;
 }
 
 // Getters
@@ -63,7 +86,9 @@ int Student::GetDaysLeftForEachClass(int position) const {
             break;
     }
     }
-
+DegreeProgram Student::GetDegreeProgram() const {
+    return m_degreeProgram;
+}
 // Setters
 
 void Student::SetStudentID(string studentID) {
@@ -96,5 +121,7 @@ void Student::SetDaysLeftForEachClass(int position, int value) {
             m_daysLeftforEachClass0 = value;
             break;
     }
-
+}
+void Student::SetDegreeProgram(DegreeProgram degreeProgram) {
+    m_degreeProgram = degreeProgram;
 }
